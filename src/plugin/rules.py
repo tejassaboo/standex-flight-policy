@@ -91,6 +91,9 @@ SEGMENT_PHRASE = "For flights with a segment of 3 hours or more in duration, an 
 # the Group VP of Finance or the Corporate CFO.
 UNCLEAR_ROLES = [Approver.NOT_NAMED, Approver.SUPERVISOR, Approver.MANAGER, Approver.GROUP_VP_FINANCE,
                  Approver.CHIEF_FINANCIAL_OFFICER]
+# Such a hold also waits on that sign-off, so APPROVAL_REQUIRED may stand beside UNCLEAR_POLICY_TEXT (the reason
+# of a hold that awaits someone; NJC iron-plover), and the section may be EXCEPTIONS TO THIS POLICY (lines 935-937).
+UNCLEAR_REASONS = [ReasonCode.UNCLEAR_POLICY_TEXT, ReasonCode.APPROVAL_REQUIRED]
 
 
 def over(rule, offer):
@@ -221,7 +224,8 @@ def companion(trip, seated):
     if not trip.accompanies or trip.requested_cabin != Cabin.ECONOMY:
         raise ValueError("a companion with nobody accompanied, or outside economy, is not modelled")
     if trip.purpose_kind in (Purpose.PERSONAL, Purpose.INTERNAL_MEETING, Purpose.TRAINING):
-        return refuse([ReasonCode.COMPANION_NOT_COVERED],
+        # The trip record calls this a personal trip, so PERSONAL_TRAVEL_NOT_COVERED names the same refusal.
+        return refuse([ReasonCode.COMPANION_NOT_COVERED, ReasonCode.PERSONAL_TRAVEL_NOT_COVERED],
                       [Clause.SPOUSE_COMPANION, Clause.NON_REIMBURSABLE],
                       "Lines 697-700: spouse or companion travel expenses, air included, are not reimbursable; the "
                       "exception of lines 700-703 needs a specific business purpose, and this trip has none (line 874: "
@@ -291,8 +295,10 @@ def premium(trip, seated):
     if qualifying and unclear:
         raise ValueError("premium economy offers both qualifying and unclear are not modelled")
     if unclear:
-        return answer(Decision.FLAG_FOR_APPROVAL, cheapest(unclear), [ReasonCode.UNCLEAR_POLICY_TEXT], UNCLEAR_ROLES,
-                      [Clause.AIRLINE_TRAVEL],
+        # Hold either reading's offer (the premium fare, or the lowest economy fare of the per-segment reading);
+        # the hold waits on a supervisor/manager (lines 935-937), so APPROVAL_REQUIRED and EXCEPTIONS also stand.
+        return answer(Decision.FLAG_FOR_APPROVAL, [*cheapest(unclear), *lowest_economy(seated)],
+                      UNCLEAR_REASONS, UNCLEAR_ROLES, [Clause.AIRLINE_TRAVEL, Clause.EXCEPTIONS],
                       "Lines 136-138: one flight of the itinerary is 3 hours or more and the other is under 3 hours. "
                       "Premium economy may be selected 'for flights with a segment of 3 hours or more', but coach is used "
                       "on segments under 3 hours, and the offer sells premium economy on both flights; the text does not "
@@ -432,12 +438,15 @@ def routing(trip, seated):
                       "airfare (line 118): book the nonstop the traveller asked for, the cheapest nonstop.")
     if not trip.wants_nonstop:
         return answer(Decision.BOOK, best,
-                      [ReasonCode.COST_SAVINGS, ReasonCode.LOWEST_FARE, ReasonCode.ALTERNATE_ROUTE_TOO_EXPENSIVE],
+                      # The connection is "within" every margin of lines 145-146, so WITHIN_MARGIN also names it.
+                      [ReasonCode.COST_SAVINGS, ReasonCode.LOWEST_FARE, ReasonCode.ALTERNATE_ROUTE_TOO_EXPENSIVE,
+                       ReasonCode.ALTERNATE_ROUTE_WITHIN_MARGIN],
                       unused_sign_offs(trip), clauses,
                       "Lines 141-146: the connection saves $200 or more, adds no more than 2 hours and leaves within 2 "
                       "hours of the requested time, so the less expensive routing is selected; line 118: the lowest "
                       "logical airfare. The traveller did not ask for the nonstop.")
-    return answer(Decision.FLAG_FOR_APPROVAL, [nonstop, *best], [ReasonCode.UNCLEAR_POLICY_TEXT], UNCLEAR_ROLES, clauses,
+    return answer(Decision.FLAG_FOR_APPROVAL, [nonstop, *best], UNCLEAR_REASONS, UNCLEAR_ROLES,
+                  [*clauses, Clause.EXCEPTIONS],
                   "Lines 141-146: the connection passes every routing test, so it is the lowest logical airfare, which "
                   "line 118 requires travelers to accept; but lines 113-115 say the traveler has the option of deciding "
                   "whether the alternative is acceptable and, on declining the lowest airfare, the lost savings go on "

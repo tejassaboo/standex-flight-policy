@@ -111,12 +111,15 @@
   "expected": {
     "decision": "FLAG_FOR_APPROVAL",
     "offer_slots": [
+      "united-economy",
       "united-premium"
     ],
     "cabins": [
+      "ECONOMY",
       "PREMIUM_ECONOMY"
     ],
     "reason_codes": [
+      "APPROVAL_REQUIRED",
       "UNCLEAR_POLICY_TEXT"
     ],
     "approvers": [
@@ -127,7 +130,8 @@
       "SUPERVISOR"
     ],
     "clauses": [
-      "AIRLINE_TRAVEL"
+      "AIRLINE_TRAVEL",
+      "EXCEPTIONS"
     ],
     "unclear_phrase": "For flights with a segment of 3 hours or more in duration, an employee may select"
   },
@@ -161,5 +165,5 @@
     }
   ],
   "distractors": [],
-  "design_notes": "Each itinerary has one flight under 3 hours (140 or 145 minutes to Chicago) and one of 3 hours or more (245 or 250 minutes to Portland). Premium economy may be selected 'for flights with a segment of 3 hours or more' (lines 137-138), but coach is used on 'all flights with each segment under 3 hours' (line 136), and the offer sells premium economy on both flights. The text does not say whether one long segment qualifies the whole ticket: hold the cheapest premium economy fare."
+  "design_notes": "Each itinerary has one flight under 3 hours (140 or 145 minutes to Chicago) and one of 3 hours or more (245 or 250 minutes to Portland). Premium economy may be selected 'for flights with a segment of 3 hours or more' (lines 137-138), but coach is used on 'all flights with each segment under 3 hours' (line 136), and the offer sells premium economy on both flights. The text does not say whether one long segment qualifies the whole ticket: hold the cheapest premium economy fare, or the lowest economy fare of the per-segment reading (audit: both readings' offers are held, as in umber-wisp)."
 }

@@ -63,11 +63,11 @@ cap of 65,536, and a run with one repeated search (about 48,000 before `submit`)
 | `thistle-amber` | distractor | BOOK (southwest-economy; ECONOMY): 35-day car rental | 111-112, 118, 137-138 |
 | `quince-ember` | refusal | REFUSE: personal trip | 47-48, 737 |
 | `rowan-slate` | refusal | REFUSE: companion without a business purpose | 697-703, 874 |
-| `umber-wisp` | flag | FLAG_FOR_APPROVAL (nonstop or connection; ECONOMY), UNCLEAR_POLICY_TEXT | 112-118, 141-146, 935-937 |
-| `vetch-harbor` | flag | FLAG_FOR_APPROVAL (united-premium; PREMIUM_ECONOMY), UNCLEAR_POLICY_TEXT | 136-138, 935-937 |
+| `umber-wisp` | flag | FLAG_FOR_APPROVAL (nonstop or connection; ECONOMY), UNCLEAR_POLICY_TEXT (or APPROVAL_REQUIRED) | 112-118, 141-146, 935-937 |
+| `vetch-harbor` | flag | FLAG_FOR_APPROVAL (united-premium or united-economy), UNCLEAR_POLICY_TEXT (or APPROVAL_REQUIRED) | 136-138, 935-937 |
 | `willow-gale` | flag | FLAG_FOR_APPROVAL (cathay-business; BUSINESS), APPROVAL_REQUIRED, SUPERVISOR | 125-128, 139-140 |
 
-Every accepted reason, approver and section per case is in the scenario files and `BUILD_NOTES.md`.
+Every accepted reason, approver and section per case is in the scenario files, `tests/BUILD_NOTES.md` and `tests/AUDIT_NOTES.md`.
 
 **Duration (`rules.over`).** Lines 136-140 set the cabin per segment, inclusive: premium economy may be selected for
 "a segment of 3 hours or more" (180 minutes), business class for "a segment of 10 hours or more" (600 minutes);
@@ -108,7 +108,8 @@ unclear flags); always booking the cheapest seat with `LOWEST_FARE`, `NONE` and 
 - `verifier/`: byte-identical copies of the shared modules and `rules.py`, plus `booking.py` and `tools.py`.
 - `tests/`: the template's acceptance suite; `tests/plugin_spec.py` holds this policy's settings.
 - `tests/build_scenarios.py`: writes the scenario files (an authoring aid, not a test).
-- `BUILD_NOTES.md`: design choices, the blind read and the acceptance outputs.
+- `tests/BUILD_NOTES.md`: design choices, the blind read and the acceptance outputs.
+- `tests/AUDIT_NOTES.md`: the independent audit and its fixes.
 
 ## Develop and run
 

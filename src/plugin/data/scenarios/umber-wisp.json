@@ -119,6 +119,7 @@
       "ECONOMY"
     ],
     "reason_codes": [
+      "APPROVAL_REQUIRED",
       "UNCLEAR_POLICY_TEXT"
     ],
     "approvers": [
@@ -130,7 +131,8 @@
     ],
     "clauses": [
       "AIRLINE_TRAVEL",
-      "TRAVEL_MANAGEMENT"
+      "TRAVEL_MANAGEMENT",
+      "EXCEPTIONS"
     ],
     "unclear_phrase": "The traveler will have the option of deciding whether the alternative is acceptable or unacceptable"
   },

@@ -147,6 +147,7 @@ NOT_ELIGIBLE = ["LOWEST_FARE", "UPGRADE_NOT_ELIGIBLE"]
 BUSINESS_NOT_MET = ["LONG_FLIGHT_CONDITION_NOT_MET", "LOWEST_FARE", "UPGRADE_NOT_ELIGIBLE"]
 LONG_OK = ["INTERNATIONAL_LONG_FLIGHT", "LONG_FLIGHT_APPROVED"]
 UNCLEAR_ROLES = ["CHIEF_FINANCIAL_OFFICER", "GROUP_VP_FINANCE", "MANAGER", "NOT_NAMED", "SUPERVISOR"]
+UNCLEAR_REASONS = ["APPROVAL_REQUIRED", "UNCLEAR_POLICY_TEXT"]
 
 # ===== easy (5) =====
 
@@ -430,7 +431,8 @@ scenario(
     "nonstop or a connection, whatever the policy calls for.",
     trip(**SFO_TRIP),
     search("BOS", "SFO", "2027-02-09", SFO_FLIGHTS, SFO_OFFERS),
-    expected("BOOK", ["detroit-economy"], ["ECONOMY"], ["ALTERNATE_ROUTE_TOO_EXPENSIVE", "COST_SAVINGS", "LOWEST_FARE"],
+    expected("BOOK", ["detroit-economy"], ["ECONOMY"],
+             ["ALTERNATE_ROUTE_TOO_EXPENSIVE", "ALTERNATE_ROUTE_WITHIN_MARGIN", "COST_SAVINGS", "LOWEST_FARE"],
              ["NONE"], LOW_CLAUSES),
     [ROUTING, LOWEST, AGENCY],
     "The 08:00 nonstop is $618.00 (395 minutes). The Detroit connection leaves at 07:15 and lands 40 minutes after "
@@ -633,7 +635,8 @@ scenario(
         offer("jetblue-economy", "jetblue", "ECONOMY", 32600),
         offer("southwest-economy", "southwest", "ECONOMY", 29800),
     ], background=2),
-    expected("REFUSE", [], ["NONE"], ["COMPANION_NOT_COVERED"], ["NONE"], ["NON_REIMBURSABLE", "SPOUSE_COMPANION"]),
+    expected("REFUSE", [], ["NONE"], ["COMPANION_NOT_COVERED", "PERSONAL_TRAVEL_NOT_COVERED"], ["NONE"],
+             ["NON_REIMBURSABLE", "SPOUSE_COMPANION"]),
     [COMPANION, FAMILY],
     "Lines 697-700: spouse or companion travel expenses, air included, are not reimbursable. The exception (lines "
     "700-703) needs a specific business purpose and advance approval; sightseeing is no business purpose, so the "
@@ -648,8 +651,8 @@ scenario(
     trip(**{**SFO_TRIP, "traveller_name": "Irene Castell", "traveller_title": "Senior Applications Engineer",
             "wants_nonstop": True}),
     search("BOS", "SFO", "2027-02-09", SFO_FLIGHTS, SFO_OFFERS),
-    expected("FLAG_FOR_APPROVAL", ["detroit-economy", "nonstop-economy"], ["ECONOMY"], ["UNCLEAR_POLICY_TEXT"],
-             UNCLEAR_ROLES, LOW_CLAUSES, phrase="The traveler will have the option of deciding whether the alternative "
+    expected("FLAG_FOR_APPROVAL", ["detroit-economy", "nonstop-economy"], ["ECONOMY"], UNCLEAR_REASONS,
+             UNCLEAR_ROLES, [*LOW_CLAUSES, "EXCEPTIONS"], phrase="The traveler will have the option of deciding whether the alternative "
              "is acceptable or unacceptable"),
     [OPTION, LOWEST, ROUTING, CONCERNS],
     "The Detroit connection passes all three tests of lines 141-146 (saves $249.00, 85 more minutes, leaves 45 "
@@ -681,15 +684,16 @@ scenario(
         offer("american-economy", "american", "ECONOMY", 43600),
         offer("american-premium", "american", "PREMIUM_ECONOMY", 72800),
     ]),
-    expected("FLAG_FOR_APPROVAL", ["united-premium"], ["PREMIUM_ECONOMY"], ["UNCLEAR_POLICY_TEXT"], UNCLEAR_ROLES,
-             ["AIRLINE_TRAVEL"], phrase="For flights with a segment of 3 hours or more in duration, an employee may "
+    expected("FLAG_FOR_APPROVAL", ["united-economy", "united-premium"], ["ECONOMY", "PREMIUM_ECONOMY"],
+             UNCLEAR_REASONS, UNCLEAR_ROLES, ["AIRLINE_TRAVEL", "EXCEPTIONS"], phrase="For flights with a segment of 3 hours or more in duration, an employee may "
              "select"),
     [PREMIUM, COACH, CONCERNS],
     "Each itinerary has one flight under 3 hours (140 or 145 minutes to Chicago) and one of 3 hours or more (245 or "
     "250 minutes to Portland). Premium economy may be selected 'for flights with a segment of 3 hours or more' (lines "
     "137-138), but coach is used on 'all flights with each segment under 3 hours' (line 136), and the offer sells "
     "premium economy on both flights. The text does not say whether one long segment qualifies the whole ticket: hold "
-    "the cheapest premium economy fare.",
+    "the cheapest premium economy fare, or the lowest economy fare of the per-segment reading (audit: both readings' "
+    "offers are held, as in umber-wisp).",
     flag_twins=["birch-tallow", "gorse-lumen"],
     ambiguity={"phrase": "For flights with a segment of 3 hours or more in duration, an employee may select",
                "readings": [("the itinerary has a segment of 3 hours or more, so premium economy may be selected for "

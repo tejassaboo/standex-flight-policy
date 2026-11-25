@@ -79,7 +79,8 @@
       "NONE"
     ],
     "reason_codes": [
-      "COMPANION_NOT_COVERED"
+      "COMPANION_NOT_COVERED",
+      "PERSONAL_TRAVEL_NOT_COVERED"
     ],
     "approvers": [
       "NONE"
