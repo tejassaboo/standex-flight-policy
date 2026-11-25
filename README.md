@@ -1,5 +1,7 @@
 # Standex Travel Policy Flight Booking
 
+**Source of the handbook:** http://web.archive.org/web/20231025075509id_/https://standex.com/wp-content/uploads/2020/06/TVL-1-1-Travel-Policies-and-Guidelines-2-2018.pdf. The agent reads it verbatim (bundled at `src/plugin/data/policy.txt`); flights, fares and trips are synthetic.
+
 **No affiliation with Standex International Corporation.** The handbook is the company's *TVL 1-1 Travel Policies
 and Guidelines* (February 2018), a PDF the company once hosted publicly (Wayback Machine copy), bundled verbatim for
 research. Do not publish this plugin before the course staff confirm that a verbatim corporate handbook may be
