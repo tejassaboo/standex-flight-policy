@@ -93,3 +93,24 @@ python3 ../_template/check_shared.py .            : ok
 nanoagent plugin inspect .                        exit 0
 stock_verify.py . (nanoagent venv python)         24 scenarios, 0 failures
 ```
+
+## Reason codes on declined requests (lead's decision, `_template/APPROVER_REVIEW.md` section 4)
+
+The book task's instructions now end with: "When you book something other than what the traveller asked for, the
+reason code gives why their request is declined." Every BOOK that declines what the traveller asked for was re-read:
+
+- `gorse-lumen` (premium economy asked, 179-minute flight): `LOWEST_FARE` removed. Accepts `UPGRADE_NOT_ELIGIBLE`
+  and now `LONG_FLIGHT_CONDITION_NOT_MET`, since the ground is the 3-hour segment condition of lines 136-138, read
+  the same way the business twin `ivy-sorrel` reads the 10-hour one.
+- `ivy-sorrel` (business asked, 599-minute flight): `LOWEST_FARE` removed. Accepts `UPGRADE_NOT_ELIGIBLE`,
+  `LONG_FLIGHT_CONDITION_NOT_MET` (lines 139-140).
+- `kiln-meadow` (Delta asked, $1 above the lowest): unchanged. Lines 154-155 decline the airline because its cost is
+  not "at or below the lowest fare offered", so the ground is the lowest-fare rule and `LOWEST_FARE` stays beside
+  `LOYALTY_PROGRAM_PREFERENCE` (line 240). Its twin `juniper-flint` still fails the always-cheapest agent.
+- Not declines, unchanged: `maple-onyx` (the traveller leaves routing to the policy; the connection is within the
+  requested time), `nettle-brine` (nonstop granted), `ochre-pinion` (refundable granted), `oak-saffron`
+  (companion granted), `sage-tundra` (economy is what was asked), and the cases that ask for nothing special.
+
+Always-cheapest baseline (`MAX_PASS_ALWAYS_LOWEST`): 10 -> 8. Rules changed in both `rules.py` copies (still
+byte-identical); scenario JSON regenerated. Acceptance: pytest 210 passed, ruff clean, `uv lock --check` ok,
+`check_shared.py` ok, `stock_verify.py` 24 scenarios 0 failures, stock `nanoagent plugin inspect .` exit 0.

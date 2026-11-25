@@ -38,6 +38,12 @@ cap of 65,536, and a run with one repeated search (about 48,000 before `submit`)
   Fares are in cents of US dollars (`currency: USD`).
 - **Success:** every field is one the answer key accepts; the cabin is graded as the chosen offer's own. Score =
   fields right / 6.
+- **Reasons on a declined request.** The task instructions say that when the booking is not what the traveller asked
+  for, the reason code gives why the request is declined. Such a booking accepts only the codes that name the
+  handbook's ground, not `LOWEST_FARE`: `gorse-lumen` (premium economy under 3 hours) and `ivy-sorrel` (business
+  under 10 hours) accept `UPGRADE_NOT_ELIGIBLE` or `LONG_FLIGHT_CONDITION_NOT_MET`. `kiln-meadow` keeps
+  `LOWEST_FARE` beside `LOYALTY_PROGRAM_PREFERENCE`, because lines 154-155 decline the chosen airline on the
+  lowest-fare test itself ("at or below the lowest fare offered").
 - **No hidden facts:** no scenario has `answer_key_inputs`.
 
 | Scenario | Category | Expected decision (offer; cabin) | Frozen lines |
@@ -81,7 +87,7 @@ about the policy to the immediate supervisor/manager) and `GROUP_VP_FINANCE` or 
 37-40 grant exceptions).
 
 Degenerate agents (`tests/test_verifier.py`): always holding the right offer as unclear passes 2 cases (the two
-unclear flags); always booking the cheapest seat with `LOWEST_FARE`, `NONE` and the right section passes 10.
+unclear flags); always booking the cheapest seat with `LOWEST_FARE`, `NONE` and the right section passes 8.
 
 ## Tools
 

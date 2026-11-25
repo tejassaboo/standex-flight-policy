@@ -272,8 +272,9 @@ def business(trip, seated):
         raise ValueError("a business fare on a mixed-length itinerary cheaper than the qualifying one is not modelled")
     if not wanted:
         lowest = lowest_economy(seated)
+        # The reason names why business is declined (the duration rule), so LOWEST_FARE is not accepted.
         return answer(Decision.BOOK, lowest,
-                      [ReasonCode.UPGRADE_NOT_ELIGIBLE, ReasonCode.LONG_FLIGHT_CONDITION_NOT_MET, ReasonCode.LOWEST_FARE],
+                      [ReasonCode.UPGRADE_NOT_ELIGIBLE, ReasonCode.LONG_FLIGHT_CONDITION_NOT_MET],
                       unused_sign_offs(trip), [Clause.AIRLINE_TRAVEL, Clause.AIR_UPGRADES],
                       "Lines 139-140: business class needs a segment of 10 hours or more, and no segment reaches 600 "
                       "minutes; the traveller asked for plain economy otherwise, so the lowest logical airfare (line "
@@ -308,7 +309,10 @@ def premium(trip, seated):
                       unused_sign_offs(trip), [Clause.AIRLINE_TRAVEL],
                       "Lines 137-138: every flight of the itinerary is 3 hours or more (180 minutes or more), so the "
                       "employee may select premium economy: the cheapest premium economy fare.")
-    return answer(Decision.BOOK, lowest_economy(seated), [ReasonCode.UPGRADE_NOT_ELIGIBLE, ReasonCode.LOWEST_FARE],
+    # The reason names why premium economy is declined: not eligible, or the 3-hour segment condition not met
+    # (LONG_FLIGHT_CONDITION_NOT_MET reads the same way as on a business request); LOWEST_FARE is not accepted.
+    return answer(Decision.BOOK, lowest_economy(seated),
+                  [ReasonCode.UPGRADE_NOT_ELIGIBLE, ReasonCode.LONG_FLIGHT_CONDITION_NOT_MET],
                   unused_sign_offs(trip), [Clause.AIRLINE_TRAVEL, Clause.AIR_UPGRADES],
                   "Line 136: coach or economy is used on flights with each segment under 3 hours (under 180 minutes), "
                   "so premium economy is not available; the lowest logical airfare (line 118). Line 225: upgrades are "
@@ -369,6 +373,8 @@ def airline_choice(trip, seated):
                       "below'), so the selection is permitted: book the chosen airline's lowest fare.")
     if not any(offer.carrier == trip.chosen_airline for offer in in_cabin(seated, Cabin.ECONOMY)):
         raise ValueError("a chosen airline with no offer on the route is not modelled")
+    # The ground for declining the airline is the lowest-fare test of lines 154-155 itself ("at or below the lowest
+    # fare offered"), so LOWEST_FARE names why the request is declined, as does the points rule of line 240.
     return answer(Decision.BOOK, lowest, [ReasonCode.LOWEST_FARE, ReasonCode.LOYALTY_PROGRAM_PREFERENCE],
                   unused_sign_offs(trip), [*clauses, Clause.TRAVEL_MANAGEMENT],
                   "Lines 154-155: the chosen airline costs more than the lowest fare offered, so the selection is not "

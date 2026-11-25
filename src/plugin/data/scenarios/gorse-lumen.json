@@ -91,7 +91,7 @@
       "ECONOMY"
     ],
     "reason_codes": [
-      "LOWEST_FARE",
+      "LONG_FLIGHT_CONDITION_NOT_MET",
       "UPGRADE_NOT_ELIGIBLE"
     ],
     "approvers": [
