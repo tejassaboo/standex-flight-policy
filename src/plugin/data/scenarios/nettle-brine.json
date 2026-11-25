@@ -1,0 +1,149 @@
+{
+  "id": "nettle-brine",
+  "category": "multi_rule",
+  "overlays": [
+    "multi_leg",
+    "dearer_option"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Boston to Seattle on December 10th for the customer training. I want the 9 a.m. nonstop; please don't put me on a connection.",
+  "trip": {
+    "traveller_name": "Joyce Amari",
+    "traveller_title": "Technical Trainer",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "origin": "BOS",
+    "destination": "SEA",
+    "travel_date": "2026-12-10",
+    "booking_date": "2026-11-23",
+    "requested_departure": "09:00",
+    "purpose": "Customer operator training in Seattle",
+    "purpose_kind": "TRAINING",
+    "requested_cabin": "ECONOMY",
+    "wants_nonstop": true,
+    "chosen_airline": "",
+    "wants_refundable": false,
+    "dates_may_move": false,
+    "doctor_note_on_file": false,
+    "sign_offs": [],
+    "car_rental_days": 0
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "BOS",
+        "destination": "SEA",
+        "date": "2026-12-10",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "alaska": {
+            "carrier": "AS",
+            "depart": "09:00",
+            "minutes": [
+              385
+            ]
+          },
+          "minneapolis": {
+            "carrier": "DL",
+            "via": [
+              "MSP"
+            ],
+            "depart": "13:10",
+            "minutes": [
+              165,
+              225
+            ],
+            "layovers": [
+              130
+            ]
+          },
+          "delta": {
+            "carrier": "DL",
+            "depart": "11:30",
+            "minutes": [
+              390
+            ]
+          }
+        },
+        "offers": [
+          {
+            "slot": "alaska-economy",
+            "flight": "alaska",
+            "cabin": "ECONOMY",
+            "fare_cents": 48200
+          },
+          {
+            "slot": "minneapolis-economy",
+            "flight": "minneapolis",
+            "cabin": "ECONOMY",
+            "fare_cents": 42200
+          },
+          {
+            "slot": "delta-economy",
+            "flight": "delta",
+            "cabin": "ECONOMY",
+            "fare_cents": 51400
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "alaska-economy"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "ALTERNATE_ROUTE_WITHIN_MARGIN",
+      "CONNECTION_TOO_LONG",
+      "LOWEST_FARE"
+    ],
+    "approvers": [
+      "NONE"
+    ],
+    "clauses": [
+      "AIRLINE_TRAVEL",
+      "TRAVEL_MANAGEMENT"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        141,
+        146
+      ],
+      "sha256": "20c5219b9450f07be5f282c4c71e640a8b52b5ae9cbfa46cf5ca2965d6ac6313",
+      "quote": "• If a direct flight is more expensive than a routing with a connecting flight, the less expensive routing flight should be selected if: o Fare savings is $200 USD (or equivalent amount in local currency) or more roundtrip; o One-way elapsed trip time is not increased by more than 2 hours; or o Departure/arrival time is within 2 hours (before/after) of the requested time.",
+      "why": "the cheaper connecting routing should be selected if the listed tests are met"
+    },
+    {
+      "lines": [
+        118,
+        118
+      ],
+      "sha256": "224293520d5087aa1106f0af655ab63323a8a5f9a39d21c39bdadc0ae524e28c",
+      "quote": "Travelers are required to accept the lowest logical airfare available.",
+      "why": "the default: the lowest logical airfare"
+    },
+    {
+      "lines": [
+        112,
+        115
+      ],
+      "sha256": "ddbc90ce7a35991c3a7c0e2132b328078afa0039370e511acd363defbb50773c",
+      "quote": "When a significant savings can be made, alternatives for consideration will be offered. The traveler will have the option of deciding whether the alternative is acceptable or unacceptable. If the traveler declines the lowest airfare, the lost savings will be reflected on the travelers' itinerary by the travel agency.",
+      "why": "the traveller may decline a cheaper alternative; the lost savings are recorded"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "The Minneapolis connection saves only $60.00 (under $200 even doubled for a round trip), takes 520 minutes against 385 (135 more) and leaves 4 h 10 min after the requested 09:00 and lands 6 h 25 min after the nonstop: it fails all three tests of lines 141-146, so on every reading it is not the lowest logical airfare, and the traveller declines it anyway (lines 113-115). Book the cheapest nonstop, Alaska at 09:00; Delta's nonstop is dearer."
+}

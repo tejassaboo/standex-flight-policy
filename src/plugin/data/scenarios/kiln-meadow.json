@@ -1,0 +1,130 @@
+{
+  "id": "kiln-meadow",
+  "category": "boundary_twin",
+  "overlays": [],
+  "twin_of": "juniper-flint",
+  "twin_fact": "Delta's fare $1 above or equal to the lowest",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Boston to Atlanta on January 14th for the supplier visit. Please put me on Delta, I collect their miles.",
+  "trip": {
+    "traveller_name": "Rita Szabo",
+    "traveller_title": "Purchasing Manager",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "origin": "BOS",
+    "destination": "ATL",
+    "travel_date": "2027-01-14",
+    "booking_date": "2026-12-21",
+    "requested_departure": "",
+    "purpose": "Supplier visit in Atlanta",
+    "purpose_kind": "CUSTOMER_VISIT",
+    "requested_cabin": "ECONOMY",
+    "wants_nonstop": false,
+    "chosen_airline": "Delta Air Lines",
+    "wants_refundable": false,
+    "dates_may_move": false,
+    "doctor_note_on_file": false,
+    "sign_offs": [],
+    "car_rental_days": 0
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "BOS",
+        "destination": "ATL",
+        "date": "2027-01-14",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "jetblue": {
+            "carrier": "B6",
+            "depart": "07:15"
+          },
+          "delta": {
+            "carrier": "DL",
+            "depart": "08:00"
+          },
+          "later": {
+            "carrier": "DL",
+            "depart": "12:30"
+          }
+        },
+        "offers": [
+          {
+            "slot": "jetblue-economy",
+            "flight": "jetblue",
+            "cabin": "ECONOMY",
+            "fare_cents": 22800
+          },
+          {
+            "slot": "delta-economy",
+            "flight": "delta",
+            "cabin": "ECONOMY",
+            "fare_cents": 22900
+          },
+          {
+            "slot": "later-economy",
+            "flight": "later",
+            "cabin": "ECONOMY",
+            "fare_cents": 26400
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "jetblue-economy"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "LOWEST_FARE",
+      "LOYALTY_PROGRAM_PREFERENCE"
+    ],
+    "approvers": [
+      "NONE"
+    ],
+    "clauses": [
+      "AIRLINE_TRAVEL",
+      "LOYALTY_PROGRAMS",
+      "TRAVEL_MANAGEMENT"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        154,
+        155
+      ],
+      "sha256": "7f947fb6352a3aa67aef275aa23b31a76cb86587f7e38090cc484f4e7cce345e",
+      "quote": "Airline selection by an employee will not be permitted unless the cost is at or below the lowest fare offered by the authorized travel agents.",
+      "why": "an employee's airline selection only at or below the lowest fare offered"
+    },
+    {
+      "lines": [
+        240,
+        240
+      ],
+      "sha256": "bbd594df9694f7eb7340003ca8bbfb373cfda805e54f2a80278371d1b529b045",
+      "quote": "Employees may not select an airline /rental car/hotel at a higher price",
+      "why": "no airline at a higher price (for personal points)"
+    },
+    {
+      "lines": [
+        118,
+        118
+      ],
+      "sha256": "224293520d5087aa1106f0af655ab63323a8a5f9a39d21c39bdadc0ae524e28c",
+      "quote": "Travelers are required to accept the lowest logical airfare available.",
+      "why": "the default: the lowest logical airfare"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "Delta's cheapest fare is $229.00, $1 above JetBlue's $228.00: airline selection is not permitted unless the cost is at or below the lowest fare offered (lines 154-155), and no airline at a higher price for points (line 240). A $1 difference is no 'significant savings' alternative (lines 112-115). Book JetBlue."
+}

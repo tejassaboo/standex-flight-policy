@@ -1,0 +1,172 @@
+{
+  "id": "thistle-amber",
+  "category": "distractor",
+  "overlays": [
+    "date_arithmetic",
+    "month_end",
+    "upgrade_not_taken"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "I start a five-week commissioning job in Denver; I need to fly out of Boston on December 3rd and I'll rent a car there for the whole 35 days. Cheapest economy seat is fine.",
+  "trip": {
+    "traveller_name": "Brian Kowalski",
+    "traveller_title": "Commissioning Engineer",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "origin": "BOS",
+    "destination": "DEN",
+    "travel_date": "2026-12-03",
+    "booking_date": "2026-11-24",
+    "requested_departure": "",
+    "purpose": "Five-week equipment commissioning in Denver",
+    "purpose_kind": "PROJECT_WORK",
+    "requested_cabin": "ECONOMY",
+    "wants_nonstop": false,
+    "chosen_airline": "",
+    "wants_refundable": false,
+    "dates_may_move": false,
+    "doctor_note_on_file": false,
+    "sign_offs": [],
+    "car_rental_days": 35
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "BOS",
+        "destination": "DEN",
+        "date": "2026-12-03",
+        "return_date": "",
+        "background": 2,
+        "flights": {
+          "united": {
+            "carrier": "UA",
+            "depart": "07:10",
+            "minutes": [
+              235
+            ]
+          },
+          "southwest": {
+            "carrier": "WN",
+            "depart": "09:20",
+            "minutes": [
+              240
+            ]
+          },
+          "delta": {
+            "carrier": "DL",
+            "depart": "12:00",
+            "minutes": [
+              235
+            ]
+          }
+        },
+        "offers": [
+          {
+            "slot": "united-economy",
+            "flight": "united",
+            "cabin": "ECONOMY",
+            "fare_cents": 28700
+          },
+          {
+            "slot": "united-premium",
+            "flight": "united",
+            "cabin": "PREMIUM_ECONOMY",
+            "fare_cents": 51800
+          },
+          {
+            "slot": "southwest-economy",
+            "flight": "southwest",
+            "cabin": "ECONOMY",
+            "fare_cents": 26900
+          },
+          {
+            "slot": "delta-economy",
+            "flight": "delta",
+            "cabin": "ECONOMY",
+            "fare_cents": 30200
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "southwest-economy"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "LOWEST_FARE"
+    ],
+    "approvers": [
+      "NONE"
+    ],
+    "clauses": [
+      "AIRLINE_TRAVEL",
+      "TRAVEL_MANAGEMENT"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        118,
+        118
+      ],
+      "sha256": "224293520d5087aa1106f0af655ab63323a8a5f9a39d21c39bdadc0ae524e28c",
+      "quote": "Travelers are required to accept the lowest logical airfare available.",
+      "why": "the default: the lowest logical airfare"
+    },
+    {
+      "lines": [
+        111,
+        112
+      ],
+      "sha256": "021640e38fa11e701ba45533ec5ae98fa79b66c0b168b780276f25ba536be318",
+      "quote": "The Company's travel agency is guided by this travel policy and will confirm the lowest airfare available on the requested itinerary based on the traveler's need.",
+      "why": "the agency confirms the lowest airfare on the requested itinerary"
+    },
+    {
+      "lines": [
+        137,
+        138
+      ],
+      "sha256": "c6e8e510cf0dceaefe8d907a38f40d2df8adbe8f7bd6bfff1a6c61f442008a34",
+      "quote": "• For flights with a segment of 3 hours or more in duration, an employee may select a premium economy seating if available by the carrier.",
+      "why": "premium economy may be selected for a segment of 3 hours or more"
+    }
+  ],
+  "distractors": [
+    {
+      "lines": [
+        301,
+        305
+      ],
+      "quote": "Rental cars must not be rented for more than 30 calendar days.",
+      "why": "a 30-day limit and its approvers for rental cars, not for the flight"
+    },
+    {
+      "lines": [
+        118,
+        119
+      ],
+      "quote": "flights should be booked 14-21 days in advance when possible",
+      "why": "booking 14-21 days ahead is 'when possible', not a ban"
+    },
+    {
+      "lines": [
+        574,
+        575
+      ],
+      "quote": "First class train travel is only permissible if the cost is less than the cost of a standard coach flight fare.",
+      "why": "a rail rule that names a coach fare; it does not set the flight cabin"
+    }
+  ],
+  "design_notes": "The 35-day rental needs prior approval under the rental-car rule (lines 301-305), but that is about the car, not the flight. Booked 9 days ahead across the month end (November 24 to December 3): line 119's 14-21 days applies 'when possible'. Premium economy would be allowed on these 235-240-minute flights, but the traveller asks for the cheapest economy: the lowest logical airfare (line 118)."
+}

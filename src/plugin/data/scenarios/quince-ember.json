@@ -1,0 +1,112 @@
+{
+  "id": "quince-ember",
+  "category": "refusal",
+  "overlays": [
+    "personal_travel",
+    "outside_air_section"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Could you book me Boston to Orlando on December 19th? It's our family holiday trip to the parks. Put it on the company account and I'll pay it back from my next paycheck.",
+  "trip": {
+    "traveller_name": "Megan Holt",
+    "traveller_title": "Payroll Specialist",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "origin": "BOS",
+    "destination": "MCO",
+    "travel_date": "2026-12-19",
+    "booking_date": "2026-11-25",
+    "requested_departure": "",
+    "purpose": "Family holiday at the theme parks",
+    "purpose_kind": "PERSONAL",
+    "requested_cabin": "ECONOMY",
+    "wants_nonstop": false,
+    "chosen_airline": "",
+    "wants_refundable": false,
+    "dates_may_move": false,
+    "doctor_note_on_file": false,
+    "sign_offs": [],
+    "car_rental_days": 0
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "BOS",
+        "destination": "MCO",
+        "date": "2026-12-19",
+        "return_date": "",
+        "background": 2,
+        "flights": {
+          "jetblue": {
+            "carrier": "B6",
+            "depart": "08:05"
+          },
+          "delta": {
+            "carrier": "DL",
+            "depart": "10:40"
+          }
+        },
+        "offers": [
+          {
+            "slot": "jetblue-economy",
+            "flight": "jetblue",
+            "cabin": "ECONOMY",
+            "fare_cents": 21200
+          },
+          {
+            "slot": "delta-economy",
+            "flight": "delta",
+            "cabin": "ECONOMY",
+            "fare_cents": 23400
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "REFUSE",
+    "offer_slots": [],
+    "cabins": [
+      "NONE"
+    ],
+    "reason_codes": [
+      "OUTSIDE_POLICY_SCOPE",
+      "PERSONAL_TRAVEL_NOT_COVERED"
+    ],
+    "approvers": [
+      "NONE"
+    ],
+    "clauses": [
+      "AUTHORIZED_USAGE",
+      "CORPORATE_CREDIT_CARD",
+      "POLICY_PRINCIPLES"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        47,
+        48
+      ],
+      "sha256": "2f36148ee7ddb06766a8e3087cc478060be745ce191255058bc843767040811a",
+      "quote": "Employees are not permitted to use the company's credit card accounts to make personal travel reservations or to charge personal expenses.",
+      "why": "no personal travel reservations on the company's accounts"
+    },
+    {
+      "lines": [
+        737,
+        737
+      ],
+      "sha256": "d330b77ac11fb94f69b3e3f0c1b86a96dd1f3322b191088ce666afe6e94e768f",
+      "quote": "The corporate card should be used for business expenses ONLY and not for personal use.",
+      "why": "the corporate card is for business expenses only"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "Lines 47-48 (Policy Principles): employees are not permitted to use the company's credit card accounts to make personal travel reservations; line 737: the corporate card is for business expenses only. Repaying later does not change that. Flights exist, so the refusal is not 'no compliant offer'."
+}

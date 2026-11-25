@@ -1,0 +1,142 @@
+{
+  "id": "elm-vesper",
+  "category": "easy",
+  "overlays": [
+    "multi_leg"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Boston to Austin on December 9th for the customer install. Any time of day, and I'm happy to connect if it's cheaper.",
+  "trip": {
+    "traveller_name": "Leah Brandt",
+    "traveller_title": "Field Service Technician",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "origin": "BOS",
+    "destination": "AUS",
+    "travel_date": "2026-12-09",
+    "booking_date": "2026-11-23",
+    "requested_departure": "",
+    "purpose": "Customer installation in Austin",
+    "purpose_kind": "PROJECT_WORK",
+    "requested_cabin": "ECONOMY",
+    "wants_nonstop": false,
+    "chosen_airline": "",
+    "wants_refundable": false,
+    "dates_may_move": false,
+    "doctor_note_on_file": false,
+    "sign_offs": [],
+    "car_rental_days": 0
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "BOS",
+        "destination": "AUS",
+        "date": "2026-12-09",
+        "return_date": "",
+        "background": 2,
+        "flights": {
+          "dallas": {
+            "carrier": "AA",
+            "via": [
+              "DFW"
+            ],
+            "depart": "06:30",
+            "layovers": [
+              70
+            ]
+          },
+          "atlanta": {
+            "carrier": "DL",
+            "via": [
+              "ATL"
+            ],
+            "depart": "08:10",
+            "layovers": [
+              85
+            ]
+          },
+          "nonstop": {
+            "carrier": "B6",
+            "depart": "10:00"
+          }
+        },
+        "offers": [
+          {
+            "slot": "dallas-economy",
+            "flight": "dallas",
+            "cabin": "ECONOMY",
+            "fare_cents": 27900
+          },
+          {
+            "slot": "atlanta-economy",
+            "flight": "atlanta",
+            "cabin": "ECONOMY",
+            "fare_cents": 30400
+          },
+          {
+            "slot": "nonstop-economy",
+            "flight": "nonstop",
+            "cabin": "ECONOMY",
+            "fare_cents": 33800
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "dallas-economy"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "LOWEST_FARE"
+    ],
+    "approvers": [
+      "NONE"
+    ],
+    "clauses": [
+      "AIRLINE_TRAVEL",
+      "TRAVEL_MANAGEMENT"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        118,
+        118
+      ],
+      "sha256": "224293520d5087aa1106f0af655ab63323a8a5f9a39d21c39bdadc0ae524e28c",
+      "quote": "Travelers are required to accept the lowest logical airfare available.",
+      "why": "the default: the lowest logical airfare"
+    },
+    {
+      "lines": [
+        111,
+        112
+      ],
+      "sha256": "021640e38fa11e701ba45533ec5ae98fa79b66c0b168b780276f25ba536be318",
+      "quote": "The Company's travel agency is guided by this travel policy and will confirm the lowest airfare available on the requested itinerary based on the traveler's need.",
+      "why": "the agency confirms the lowest airfare on the requested itinerary"
+    },
+    {
+      "lines": [
+        136,
+        136
+      ],
+      "sha256": "e8a76608e559cf6b9963710105df2c001ce88227681ba0c09c6cb2276b0b8ebb",
+      "quote": "• Coach or economy class will be used on all flights with each segment under 3 hours.",
+      "why": "coach on flights with each segment under 3 hours"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "No requested time and no wish for a nonstop: the lowest logical airfare is the Dallas connection (line 118); the traveller asks for nothing above economy, so the 210-minute first flight changes nothing (premium economy is a choice the employee 'may' make, lines 137-138). Under every reading of the routing tests (lines 141-146) a traveller who wants the cheaper connection may take it."
+}

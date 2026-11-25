@@ -1,0 +1,140 @@
+{
+  "id": "alder-quince",
+  "category": "easy",
+  "overlays": [],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "I need to get from Boston to Chicago on December 15th for the dealer meeting. Economy, whatever is cheapest.",
+  "trip": {
+    "traveller_name": "Dana Whitcomb",
+    "traveller_title": "Regional Sales Manager",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "origin": "BOS",
+    "destination": "ORD",
+    "travel_date": "2026-12-15",
+    "booking_date": "2026-11-30",
+    "requested_departure": "",
+    "purpose": "Dealer meeting in Chicago",
+    "purpose_kind": "CUSTOMER_VISIT",
+    "requested_cabin": "ECONOMY",
+    "wants_nonstop": false,
+    "chosen_airline": "",
+    "wants_refundable": false,
+    "dates_may_move": false,
+    "doctor_note_on_file": false,
+    "sign_offs": [],
+    "car_rental_days": 0
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "BOS",
+        "destination": "ORD",
+        "date": "2026-12-15",
+        "return_date": "",
+        "background": 3,
+        "flights": {
+          "early": {
+            "carrier": "AA",
+            "depart": "07:00"
+          },
+          "mid": {
+            "carrier": "UA",
+            "depart": "09:30"
+          },
+          "noon": {
+            "carrier": "AA",
+            "depart": "13:15"
+          },
+          "late": {
+            "carrier": "DL",
+            "depart": "17:00"
+          }
+        },
+        "offers": [
+          {
+            "slot": "early-economy",
+            "flight": "early",
+            "cabin": "ECONOMY",
+            "fare_cents": 21400,
+            "seats": false
+          },
+          {
+            "slot": "mid-economy",
+            "flight": "mid",
+            "cabin": "ECONOMY",
+            "fare_cents": 23800
+          },
+          {
+            "slot": "noon-economy",
+            "flight": "noon",
+            "cabin": "ECONOMY",
+            "fare_cents": 25900
+          },
+          {
+            "slot": "late-economy",
+            "flight": "late",
+            "cabin": "ECONOMY",
+            "fare_cents": 31500,
+            "refundable": true
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "mid-economy"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "LOWEST_FARE"
+    ],
+    "approvers": [
+      "NONE"
+    ],
+    "clauses": [
+      "AIRLINE_TRAVEL",
+      "TRAVEL_MANAGEMENT"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        118,
+        118
+      ],
+      "sha256": "224293520d5087aa1106f0af655ab63323a8a5f9a39d21c39bdadc0ae524e28c",
+      "quote": "Travelers are required to accept the lowest logical airfare available.",
+      "why": "the default: the lowest logical airfare"
+    },
+    {
+      "lines": [
+        111,
+        112
+      ],
+      "sha256": "021640e38fa11e701ba45533ec5ae98fa79b66c0b168b780276f25ba536be318",
+      "quote": "The Company's travel agency is guided by this travel policy and will confirm the lowest airfare available on the requested itinerary based on the traveler's need.",
+      "why": "the agency confirms the lowest airfare on the requested itinerary"
+    },
+    {
+      "lines": [
+        136,
+        136
+      ],
+      "sha256": "e8a76608e559cf6b9963710105df2c001ce88227681ba0c09c6cb2276b0b8ebb",
+      "quote": "• Coach or economy class will be used on all flights with each segment under 3 hours.",
+      "why": "coach on flights with each segment under 3 hours"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "A 130-minute domestic flight in economy at the lowest logical airfare (line 118). The cheaper 07:00 fare is sold out; the refundable fare is dearer anyway."
+}

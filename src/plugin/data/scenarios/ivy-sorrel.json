@@ -1,0 +1,161 @@
+{
+  "id": "ivy-sorrel",
+  "category": "boundary_twin",
+  "overlays": [
+    "upgrade_not_taken"
+  ],
+  "twin_of": "hemlock-tide",
+  "twin_fact": "nonstops scheduled at 599 or 600 minutes",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Please book business class from San Francisco to Seoul on March 2nd for the customer summit. If the policy doesn't allow business on this flight, just put me in plain economy, nothing in between.",
+  "trip": {
+    "traveller_name": "Kenji Morales",
+    "traveller_title": "Key Account Director",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "origin": "SFO",
+    "destination": "ICN",
+    "travel_date": "2027-03-02",
+    "booking_date": "2027-02-08",
+    "requested_departure": "",
+    "purpose": "Customer summit in Seoul",
+    "purpose_kind": "CONFERENCE",
+    "requested_cabin": "BUSINESS",
+    "wants_nonstop": false,
+    "chosen_airline": "",
+    "wants_refundable": false,
+    "dates_may_move": false,
+    "doctor_note_on_file": false,
+    "sign_offs": [],
+    "car_rental_days": 0
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "SFO",
+        "destination": "ICN",
+        "date": "2027-03-02",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "united": {
+            "carrier": "UA",
+            "depart": "11:10",
+            "minutes": [
+              599
+            ]
+          },
+          "korean": {
+            "carrier": "KE",
+            "depart": "13:40",
+            "minutes": [
+              599
+            ]
+          }
+        },
+        "offers": [
+          {
+            "slot": "united-economy",
+            "flight": "united",
+            "cabin": "ECONOMY",
+            "fare_cents": 98500
+          },
+          {
+            "slot": "united-premium",
+            "flight": "united",
+            "cabin": "PREMIUM_ECONOMY",
+            "fare_cents": 172000
+          },
+          {
+            "slot": "united-business",
+            "flight": "united",
+            "cabin": "BUSINESS",
+            "fare_cents": 512000
+          },
+          {
+            "slot": "korean-economy",
+            "flight": "korean",
+            "cabin": "ECONOMY",
+            "fare_cents": 94200
+          },
+          {
+            "slot": "korean-premium",
+            "flight": "korean",
+            "cabin": "PREMIUM_ECONOMY",
+            "fare_cents": 168000
+          },
+          {
+            "slot": "korean-business",
+            "flight": "korean",
+            "cabin": "BUSINESS",
+            "fare_cents": 488000
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "korean-economy"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "LONG_FLIGHT_CONDITION_NOT_MET",
+      "LOWEST_FARE",
+      "UPGRADE_NOT_ELIGIBLE"
+    ],
+    "approvers": [
+      "NONE"
+    ],
+    "clauses": [
+      "AIR_UPGRADES",
+      "AIRLINE_TRAVEL"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        139,
+        140
+      ],
+      "sha256": "9b725f1af27d900a8607f5ab3d23740b459350f86c8e7b12aab251065e48e019",
+      "quote": "• For flights with a segment of 10 hours or more in duration, an employee may select business class.",
+      "why": "business class may be selected for a segment of 10 hours or more"
+    },
+    {
+      "lines": [
+        137,
+        138
+      ],
+      "sha256": "c6e8e510cf0dceaefe8d907a38f40d2df8adbe8f7bd6bfff1a6c61f442008a34",
+      "quote": "• For flights with a segment of 3 hours or more in duration, an employee may select a premium economy seating if available by the carrier.",
+      "why": "premium economy may be selected for a segment of 3 hours or more"
+    },
+    {
+      "lines": [
+        118,
+        118
+      ],
+      "sha256": "224293520d5087aa1106f0af655ab63323a8a5f9a39d21c39bdadc0ae524e28c",
+      "quote": "Travelers are required to accept the lowest logical airfare available.",
+      "why": "the default: the lowest logical airfare"
+    },
+    {
+      "lines": [
+        225,
+        226
+      ],
+      "sha256": "fec32c92dc352a9e3d8f607c13ea73abbc002097a9ded3577929ce617d388da1",
+      "quote": "Upgrades for air travel are not reimbursable. If an employee wishes to upgrade, it is done at the employee's expense.",
+      "why": "upgrades are not reimbursable"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "Both nonstops are scheduled at 599 minutes, under 10 hours, so business class is not available (lines 139-140). Premium economy would be allowed (lines 137-138), but the traveller asked for plain economy otherwise: the lowest logical airfare (line 118)."
+}

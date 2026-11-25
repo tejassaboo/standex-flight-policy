@@ -1,0 +1,173 @@
+{
+  "id": "sage-tundra",
+  "category": "distractor",
+  "overlays": [
+    "date_arithmetic",
+    "upgrade_not_taken"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Boston to Tokyo Haneda on January 14th, the customer moved the kickoff up so it's short notice. I could fly business on this one, but put me in economy instead; I'd like the savings reward. My supervisor already confirmed the short notice.",
+  "trip": {
+    "traveller_name": "Daniel Ochoa",
+    "traveller_title": "Business Development Manager",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "origin": "BOS",
+    "destination": "HND",
+    "travel_date": "2027-01-14",
+    "booking_date": "2027-01-05",
+    "requested_departure": "",
+    "purpose": "Customer project kickoff in Tokyo",
+    "purpose_kind": "CUSTOMER_VISIT",
+    "requested_cabin": "ECONOMY",
+    "wants_nonstop": false,
+    "chosen_airline": "",
+    "wants_refundable": false,
+    "dates_may_move": false,
+    "doctor_note_on_file": false,
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Alicia Grant",
+        "subject": "SHORT_NOTICE"
+      }
+    ],
+    "car_rental_days": 0
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "BOS",
+        "destination": "HND",
+        "date": "2027-01-14",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "japan": {
+            "carrier": "JL",
+            "depart": "11:45",
+            "minutes": [
+              810
+            ]
+          },
+          "ana": {
+            "carrier": "NH",
+            "depart": "13:20",
+            "minutes": [
+              815
+            ]
+          }
+        },
+        "offers": [
+          {
+            "slot": "japan-economy",
+            "flight": "japan",
+            "cabin": "ECONOMY",
+            "fare_cents": 112000
+          },
+          {
+            "slot": "japan-business",
+            "flight": "japan",
+            "cabin": "BUSINESS",
+            "fare_cents": 648000
+          },
+          {
+            "slot": "ana-economy",
+            "flight": "ana",
+            "cabin": "ECONOMY",
+            "fare_cents": 108500
+          },
+          {
+            "slot": "ana-business",
+            "flight": "ana",
+            "cabin": "BUSINESS",
+            "fare_cents": 671000
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "ana-economy"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "COST_SAVINGS",
+      "LOWEST_FARE"
+    ],
+    "approvers": [
+      "NONE",
+      "SUPERVISOR"
+    ],
+    "clauses": [
+      "AIRLINE_TRAVEL",
+      "TRAVEL_MANAGEMENT",
+      "TRAVEL_SAVINGS_INCENTIVE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        118,
+        118
+      ],
+      "sha256": "224293520d5087aa1106f0af655ab63323a8a5f9a39d21c39bdadc0ae524e28c",
+      "quote": "Travelers are required to accept the lowest logical airfare available.",
+      "why": "the default: the lowest logical airfare"
+    },
+    {
+      "lines": [
+        139,
+        140
+      ],
+      "sha256": "9b725f1af27d900a8607f5ab3d23740b459350f86c8e7b12aab251065e48e019",
+      "quote": "• For flights with a segment of 10 hours or more in duration, an employee may select business class.",
+      "why": "business class may be selected for a segment of 10 hours or more"
+    },
+    {
+      "lines": [
+        179,
+        180
+      ],
+      "sha256": "d7b3f0998e9293a2bd7d37e678f5abcf0b831ac48afb3ec7f95feb3c1a1163c0",
+      "quote": "If a traveler opts for an economy or premium economy instead of a business class fare on a flight with one segment that is 10 hours or greater in duration.",
+      "why": "the incentive is for economy instead of business on a 10-hour segment"
+    }
+  ],
+  "distractors": [
+    {
+      "lines": [
+        186,
+        189
+      ],
+      "quote": "If an employee becomes aware of travel with less than 14 days ' notification, supervisor approval will be required.",
+      "why": "the short-notice approval of the savings incentive concerns the reward"
+    },
+    {
+      "lines": [
+        118,
+        119
+      ],
+      "quote": "flights should be booked 14-21 days in advance when possible",
+      "why": "booking 14-21 days ahead is 'when possible', not a ban"
+    },
+    {
+      "lines": [
+        191,
+        193
+      ],
+      "quote": "This incentive is equal to 50% of the difference between the roundtrip economy or premium economy fare and lowest roundtrip business class fare.",
+      "why": "how the reward is paid, not what is bought"
+    }
+  ],
+  "design_notes": "An 815-minute flight allows business (lines 139-140), but the employee 'may' select it and chooses economy: the lowest logical airfare (line 118), which is what the savings incentive rewards (lines 179-180). Booked 9 days ahead: the 14-day and supervisor conditions of lines 186-189 decide whether the reward is paid, not whether the ticket is bought, and line 119's 14-21 days applies 'when possible'. The supervisor's short-notice note is on file but the booking does not rely on it: NONE or SUPERVISOR."
+}

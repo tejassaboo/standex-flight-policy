@@ -1,0 +1,177 @@
+{
+  "id": "umber-wisp",
+  "category": "flag",
+  "overlays": [
+    "multi_leg",
+    "unclear_phrase"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [
+    "maple-onyx",
+    "nettle-brine"
+  ],
+  "ambiguity_note": {
+    "phrase": "The traveler will have the option of deciding whether the alternative is acceptable or unacceptable",
+    "readings": [
+      "line 118 requires the lowest logical airfare and the connection passes every routing test: book the Detroit connection",
+      "lines 113-115 let the traveller decline the cheaper alternative, with the lost savings noted on the itinerary: book the nonstop"
+    ]
+  },
+  "request": "Boston to San Francisco on February 9th for the design review. I want the 8 a.m. nonstop. I know there's a cheaper connection, but I'd rather not take it.",
+  "trip": {
+    "traveller_name": "Irene Castell",
+    "traveller_title": "Senior Applications Engineer",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "origin": "BOS",
+    "destination": "SFO",
+    "travel_date": "2027-02-09",
+    "booking_date": "2027-01-19",
+    "requested_departure": "08:00",
+    "purpose": "Customer design review in San Francisco",
+    "purpose_kind": "CUSTOMER_VISIT",
+    "requested_cabin": "ECONOMY",
+    "wants_nonstop": true,
+    "chosen_airline": "",
+    "wants_refundable": false,
+    "dates_may_move": false,
+    "doctor_note_on_file": false,
+    "sign_offs": [],
+    "car_rental_days": 0
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "BOS",
+        "destination": "SFO",
+        "date": "2027-02-09",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "nonstop": {
+            "carrier": "UA",
+            "depart": "08:00",
+            "minutes": [
+              395
+            ]
+          },
+          "detroit": {
+            "carrier": "DL",
+            "via": [
+              "DTW"
+            ],
+            "depart": "07:15",
+            "minutes": [
+              130,
+              290
+            ],
+            "layovers": [
+              60
+            ]
+          },
+          "chicago": {
+            "carrier": "AA",
+            "via": [
+              "ORD"
+            ],
+            "depart": "11:00",
+            "minutes": [
+              165,
+              275
+            ],
+            "layovers": [
+              95
+            ]
+          }
+        },
+        "offers": [
+          {
+            "slot": "nonstop-economy",
+            "flight": "nonstop",
+            "cabin": "ECONOMY",
+            "fare_cents": 61800
+          },
+          {
+            "slot": "detroit-economy",
+            "flight": "detroit",
+            "cabin": "ECONOMY",
+            "fare_cents": 36900
+          },
+          {
+            "slot": "chicago-economy",
+            "flight": "chicago",
+            "cabin": "ECONOMY",
+            "fare_cents": 52800
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "FLAG_FOR_APPROVAL",
+    "offer_slots": [
+      "detroit-economy",
+      "nonstop-economy"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "UNCLEAR_POLICY_TEXT"
+    ],
+    "approvers": [
+      "CHIEF_FINANCIAL_OFFICER",
+      "GROUP_VP_FINANCE",
+      "MANAGER",
+      "NOT_NAMED",
+      "SUPERVISOR"
+    ],
+    "clauses": [
+      "AIRLINE_TRAVEL",
+      "TRAVEL_MANAGEMENT"
+    ],
+    "unclear_phrase": "The traveler will have the option of deciding whether the alternative is acceptable or unacceptable"
+  },
+  "must_keep": [
+    {
+      "lines": [
+        112,
+        115
+      ],
+      "sha256": "ddbc90ce7a35991c3a7c0e2132b328078afa0039370e511acd363defbb50773c",
+      "quote": "When a significant savings can be made, alternatives for consideration will be offered. The traveler will have the option of deciding whether the alternative is acceptable or unacceptable. If the traveler declines the lowest airfare, the lost savings will be reflected on the travelers' itinerary by the travel agency.",
+      "why": "the traveller may decline a cheaper alternative; the lost savings are recorded"
+    },
+    {
+      "lines": [
+        118,
+        118
+      ],
+      "sha256": "224293520d5087aa1106f0af655ab63323a8a5f9a39d21c39bdadc0ae524e28c",
+      "quote": "Travelers are required to accept the lowest logical airfare available.",
+      "why": "the default: the lowest logical airfare"
+    },
+    {
+      "lines": [
+        141,
+        146
+      ],
+      "sha256": "20c5219b9450f07be5f282c4c71e640a8b52b5ae9cbfa46cf5ca2965d6ac6313",
+      "quote": "• If a direct flight is more expensive than a routing with a connecting flight, the less expensive routing flight should be selected if: o Fare savings is $200 USD (or equivalent amount in local currency) or more roundtrip; o One-way elapsed trip time is not increased by more than 2 hours; or o Departure/arrival time is within 2 hours (before/after) of the requested time.",
+      "why": "the cheaper connecting routing should be selected if the listed tests are met"
+    },
+    {
+      "lines": [
+        935,
+        937
+      ],
+      "sha256": "7d224e5b4b7e28e7f5978e7bb8c09d83046009b117b1b33e34818bc22d197f68",
+      "quote": "Any exception to this policy will be evaluated on a case-by-case basis. If your travel plans deviate from the policy as outlined above, or if you have concerns regarding the policy as it is written, your request/concern should be submitted to your immediate supervisor/manager. Every attempt",
+      "why": "concerns about the policy as written go to the immediate supervisor/manager"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "The Detroit connection passes all three tests of lines 141-146 (saves $249.00, 85 more minutes, leaves 45 minutes before the requested time), so on every reading of the list it is the lowest logical airfare, which line 118 says travelers 'are required to accept'. Lines 113-115 say the traveler 'will have the option of deciding whether the alternative is acceptable or unacceptable' and, on declining, the lost savings go on the itinerary. The traveller declines; the handbook gives no order between the two: hold the nonstop or the connection."
+}

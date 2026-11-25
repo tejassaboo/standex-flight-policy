@@ -1,0 +1,147 @@
+{
+  "id": "dahlia-quarry",
+  "category": "easy",
+  "overlays": [
+    "upgrade_not_taken"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Boston to London Heathrow on the 3rd of February for the distributor review. Economy is fine, cheapest one please.",
+  "trip": {
+    "traveller_name": "Owen Castellano",
+    "traveller_title": "International Sales Engineer",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "origin": "BOS",
+    "destination": "LHR",
+    "travel_date": "2027-02-03",
+    "booking_date": "2027-01-12",
+    "requested_departure": "",
+    "purpose": "Distributor review in London",
+    "purpose_kind": "CUSTOMER_VISIT",
+    "requested_cabin": "ECONOMY",
+    "wants_nonstop": false,
+    "chosen_airline": "",
+    "wants_refundable": false,
+    "dates_may_move": false,
+    "doctor_note_on_file": false,
+    "sign_offs": [],
+    "car_rental_days": 0
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "BOS",
+        "destination": "LHR",
+        "date": "2027-02-03",
+        "return_date": "",
+        "background": 2,
+        "flights": {
+          "british": {
+            "carrier": "BA",
+            "depart": "18:30",
+            "minutes": [
+              410
+            ]
+          },
+          "virgin": {
+            "carrier": "VS",
+            "depart": "19:45",
+            "minutes": [
+              405
+            ]
+          }
+        },
+        "offers": [
+          {
+            "slot": "british-economy",
+            "flight": "british",
+            "cabin": "ECONOMY",
+            "fare_cents": 61200
+          },
+          {
+            "slot": "british-premium",
+            "flight": "british",
+            "cabin": "PREMIUM_ECONOMY",
+            "fare_cents": 118400
+          },
+          {
+            "slot": "virgin-economy",
+            "flight": "virgin",
+            "cabin": "ECONOMY",
+            "fare_cents": 64800
+          },
+          {
+            "slot": "virgin-premium",
+            "flight": "virgin",
+            "cabin": "PREMIUM_ECONOMY",
+            "fare_cents": 121000
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "british-economy"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "LOWEST_FARE"
+    ],
+    "approvers": [
+      "NONE"
+    ],
+    "clauses": [
+      "AIRLINE_TRAVEL",
+      "TRAVEL_MANAGEMENT"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        118,
+        118
+      ],
+      "sha256": "224293520d5087aa1106f0af655ab63323a8a5f9a39d21c39bdadc0ae524e28c",
+      "quote": "Travelers are required to accept the lowest logical airfare available.",
+      "why": "the default: the lowest logical airfare"
+    },
+    {
+      "lines": [
+        111,
+        112
+      ],
+      "sha256": "021640e38fa11e701ba45533ec5ae98fa79b66c0b168b780276f25ba536be318",
+      "quote": "The Company's travel agency is guided by this travel policy and will confirm the lowest airfare available on the requested itinerary based on the traveler's need.",
+      "why": "the agency confirms the lowest airfare on the requested itinerary"
+    },
+    {
+      "lines": [
+        137,
+        138
+      ],
+      "sha256": "c6e8e510cf0dceaefe8d907a38f40d2df8adbe8f7bd6bfff1a6c61f442008a34",
+      "quote": "• For flights with a segment of 3 hours or more in duration, an employee may select a premium economy seating if available by the carrier.",
+      "why": "premium economy may be selected for a segment of 3 hours or more"
+    }
+  ],
+  "distractors": [
+    {
+      "lines": [
+        160,
+        161
+      ],
+      "quote": "It is extremely important for employees who are traveling internationally to notify Atlas in advance",
+      "why": "an international notice, not a cabin rule"
+    }
+  ],
+  "design_notes": "A 410-minute flight would allow premium economy (lines 137-138), but the employee 'may' select it and asks for the cheapest economy: the lowest logical airfare (line 118)."
+}

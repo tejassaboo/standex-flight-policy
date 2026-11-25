@@ -1,0 +1,115 @@
+{
+  "id": "rowan-slate",
+  "category": "refusal",
+  "overlays": [
+    "outside_air_section"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "My husband Ben would like to come with me to the trade show in Las Vegas on March 9th and see the sights while I'm working the booth. Can you book his flight from Boston too?",
+  "trip": {
+    "traveller_name": "Ben Alvarez",
+    "traveller_title": "Spouse of Nora Alvarez, Marketing Communications Manager",
+    "passenger": "SPOUSE_OR_COMPANION",
+    "accompanies": "Nora Alvarez",
+    "origin": "BOS",
+    "destination": "LAS",
+    "travel_date": "2027-03-09",
+    "booking_date": "2027-02-09",
+    "requested_departure": "",
+    "purpose": "Sightseeing while his wife works the trade show",
+    "purpose_kind": "PERSONAL",
+    "requested_cabin": "ECONOMY",
+    "wants_nonstop": false,
+    "chosen_airline": "",
+    "wants_refundable": false,
+    "dates_may_move": false,
+    "doctor_note_on_file": false,
+    "sign_offs": [],
+    "car_rental_days": 0
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "BOS",
+        "destination": "LAS",
+        "date": "2027-03-09",
+        "return_date": "",
+        "background": 2,
+        "flights": {
+          "jetblue": {
+            "carrier": "B6",
+            "depart": "08:30"
+          },
+          "southwest": {
+            "carrier": "WN",
+            "depart": "10:50",
+            "via": [
+              "DEN"
+            ],
+            "layovers": [
+              70
+            ]
+          }
+        },
+        "offers": [
+          {
+            "slot": "jetblue-economy",
+            "flight": "jetblue",
+            "cabin": "ECONOMY",
+            "fare_cents": 32600
+          },
+          {
+            "slot": "southwest-economy",
+            "flight": "southwest",
+            "cabin": "ECONOMY",
+            "fare_cents": 29800
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "REFUSE",
+    "offer_slots": [],
+    "cabins": [
+      "NONE"
+    ],
+    "reason_codes": [
+      "COMPANION_NOT_COVERED"
+    ],
+    "approvers": [
+      "NONE"
+    ],
+    "clauses": [
+      "NON_REIMBURSABLE",
+      "SPOUSE_COMPANION"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        697,
+        703
+      ],
+      "sha256": "e0af9f2fb05440db6989e947b7e98e3675ced0fbc4b57a1136ab3b429fdff385",
+      "quote": "SPOUSE/ COMPANION TRAVEL As a general rule, and in specific accordance with U.S. IRS regulations, spouse or companion travel expenses (air, hotel, ground transportation and meals) are not reimbursable. However, certain events may warrant the presence of a spouse or companion on a business trip. Employees will be reimbursed for the transportation expenses of an accompanying spouse or companion when there is a specific business purpose an d the trip is approved in advance by the appropriate group president or chief financial officer.",
+      "why": "companion travel is not reimbursable, except with a business purpose and advance approval by the group president or CFO"
+    },
+    {
+      "lines": [
+        874,
+        874
+      ],
+      "sha256": "11615115321c7b7fe35c039ab9c2df3e525b1abb275d5de9965fb4ee4dfcb41a",
+      "quote": "Family expenses on business trips",
+      "why": "family expenses are not reimbursable"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "Lines 697-700: spouse or companion travel expenses, air included, are not reimbursable. The exception (lines 700-703) needs a specific business purpose and advance approval; sightseeing is no business purpose, so the company buys no ticket (line 874: family expenses on business trips are not reimbursable)."
+}

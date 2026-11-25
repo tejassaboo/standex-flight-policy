@@ -1,0 +1,173 @@
+{
+  "id": "poplar-wick",
+  "category": "hidden_clause",
+  "overlays": [
+    "outside_air_section",
+    "dearer_option"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Boston to Paris on March 4th for the Lyon plant startup. My doctor's note about my back surgery is on file, and Martin Ruiz, our Group VP of Finance, approved business class as an exception. Please book business.",
+  "trip": {
+    "traveller_name": "Sofia Lindqvist",
+    "traveller_title": "Senior Process Engineer",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "origin": "BOS",
+    "destination": "CDG",
+    "travel_date": "2027-03-04",
+    "booking_date": "2027-02-10",
+    "requested_departure": "",
+    "purpose": "Plant startup support near Lyon",
+    "purpose_kind": "PROJECT_WORK",
+    "requested_cabin": "BUSINESS",
+    "wants_nonstop": false,
+    "chosen_airline": "",
+    "wants_refundable": false,
+    "dates_may_move": false,
+    "doctor_note_on_file": true,
+    "sign_offs": [
+      {
+        "role": "GROUP_VP_FINANCE",
+        "name": "Martin Ruiz",
+        "subject": "POLICY_EXCEPTION"
+      }
+    ],
+    "car_rental_days": 0
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "BOS",
+        "destination": "CDG",
+        "date": "2027-03-04",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "airfrance": {
+            "carrier": "AF",
+            "depart": "18:10",
+            "minutes": [
+              415
+            ]
+          },
+          "delta": {
+            "carrier": "DL",
+            "depart": "19:25",
+            "minutes": [
+              420
+            ]
+          }
+        },
+        "offers": [
+          {
+            "slot": "airfrance-economy",
+            "flight": "airfrance",
+            "cabin": "ECONOMY",
+            "fare_cents": 68400
+          },
+          {
+            "slot": "airfrance-premium",
+            "flight": "airfrance",
+            "cabin": "PREMIUM_ECONOMY",
+            "fare_cents": 122000
+          },
+          {
+            "slot": "airfrance-business",
+            "flight": "airfrance",
+            "cabin": "BUSINESS",
+            "fare_cents": 398000
+          },
+          {
+            "slot": "delta-economy",
+            "flight": "delta",
+            "cabin": "ECONOMY",
+            "fare_cents": 70100
+          },
+          {
+            "slot": "delta-business",
+            "flight": "delta",
+            "cabin": "BUSINESS",
+            "fare_cents": 415000
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "airfrance-business"
+    ],
+    "cabins": [
+      "BUSINESS"
+    ],
+    "reason_codes": [
+      "MEDICAL_NEED",
+      "POLICY_EXCEPTION_APPROVED"
+    ],
+    "approvers": [
+      "GROUP_VP_FINANCE",
+      "NONE"
+    ],
+    "clauses": [
+      "AIRLINE_TRAVEL",
+      "EXCEPTIONS",
+      "POLICY_PRINCIPLES"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        37,
+        40
+      ],
+      "sha256": "620aa1df28135daa0223c37412cb87df7863b245130f2a8132d8e646793d0cd2",
+      "quote": "Exceptions to this policy can only be granted in special situations with the approval of the appropriate Group VP of Finance or the Corporate CFO.",
+      "why": "an exception only with the Group VP of Finance or the Corporate CFO"
+    },
+    {
+      "lines": [
+        148,
+        149
+      ],
+      "sha256": "82cf9a79225f122b305afbae5ef5d1812cf52f63fc35b19c5cb00f070aeb669d",
+      "quote": "If an employee needs special accommodations, the employee should obtain written documentation from a doctor describing what accommodations are required.",
+      "why": "special accommodations are documented by a doctor in writing"
+    },
+    {
+      "lines": [
+        139,
+        140
+      ],
+      "sha256": "9b725f1af27d900a8607f5ab3d23740b459350f86c8e7b12aab251065e48e019",
+      "quote": "• For flights with a segment of 10 hours or more in duration, an employee may select business class.",
+      "why": "business class may be selected for a segment of 10 hours or more"
+    },
+    {
+      "lines": [
+        137,
+        138
+      ],
+      "sha256": "c6e8e510cf0dceaefe8d907a38f40d2df8adbe8f7bd6bfff1a6c61f442008a34",
+      "quote": "• For flights with a segment of 3 hours or more in duration, an employee may select a premium economy seating if available by the carrier.",
+      "why": "premium economy may be selected for a segment of 3 hours or more"
+    }
+  ],
+  "distractors": [
+    {
+      "lines": [
+        935,
+        937
+      ],
+      "sha256": "7d224e5b4b7e28e7f5978e7bb8c09d83046009b117b1b33e34818bc22d197f68",
+      "quote": "Any exception to this policy will be evaluated on a case-by-case basis. If your travel plans deviate from the policy as outlined above, or if you have concerns regarding the policy as it is written, your request/concern should be submitted to your immediate supervisor/manager. Every attempt",
+      "why": "concerns about the policy as written go to the immediate supervisor/manager"
+    }
+  ],
+  "design_notes": "A 415-minute flight allows premium economy, not business (lines 137-140). Lines 37-40 (Policy Principles): exceptions can only be granted in special situations with the approval of the Group VP of Finance or the Corporate CFO; the Group VP of Finance granted one, and the doctor's written documentation is on file (lines 148-149). Book the cheapest business fare; approver the Group VP of Finance (on file) or NONE (SYNC_NOTES 4')."
+}

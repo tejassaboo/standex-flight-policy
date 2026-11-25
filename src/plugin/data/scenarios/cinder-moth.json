@@ -1,0 +1,138 @@
+{
+  "id": "cinder-moth",
+  "category": "easy",
+  "overlays": [
+    "dearer_option"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Please book me business class from New York JFK to Hong Kong on February 8th for the plant audit in Shenzhen.",
+  "trip": {
+    "traveller_name": "Marcus Feld",
+    "traveller_title": "Director of Operations Engineering",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "origin": "JFK",
+    "destination": "HKG",
+    "travel_date": "2027-02-08",
+    "booking_date": "2027-01-11",
+    "requested_departure": "",
+    "purpose": "Supplier plant audit in Shenzhen",
+    "purpose_kind": "PROJECT_WORK",
+    "requested_cabin": "BUSINESS",
+    "wants_nonstop": false,
+    "chosen_airline": "",
+    "wants_refundable": false,
+    "dates_may_move": false,
+    "doctor_note_on_file": false,
+    "sign_offs": [],
+    "car_rental_days": 0
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "JFK",
+        "destination": "HKG",
+        "date": "2027-02-08",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "cathay": {
+            "carrier": "CX",
+            "depart": "01:15",
+            "minutes": [
+              955
+            ]
+          },
+          "american": {
+            "carrier": "AA",
+            "depart": "11:20",
+            "minutes": [
+              965
+            ]
+          }
+        },
+        "offers": [
+          {
+            "slot": "cathay-economy",
+            "flight": "cathay",
+            "cabin": "ECONOMY",
+            "fare_cents": 118000
+          },
+          {
+            "slot": "cathay-business",
+            "flight": "cathay",
+            "cabin": "BUSINESS",
+            "fare_cents": 624000
+          },
+          {
+            "slot": "american-economy",
+            "flight": "american",
+            "cabin": "ECONOMY",
+            "fare_cents": 121500
+          },
+          {
+            "slot": "american-business",
+            "flight": "american",
+            "cabin": "BUSINESS",
+            "fare_cents": 655000
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "cathay-business"
+    ],
+    "cabins": [
+      "BUSINESS"
+    ],
+    "reason_codes": [
+      "INTERNATIONAL_LONG_FLIGHT",
+      "LONG_FLIGHT_APPROVED"
+    ],
+    "approvers": [
+      "NONE"
+    ],
+    "clauses": [
+      "AIRLINE_TRAVEL"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        139,
+        140
+      ],
+      "sha256": "9b725f1af27d900a8607f5ab3d23740b459350f86c8e7b12aab251065e48e019",
+      "quote": "• For flights with a segment of 10 hours or more in duration, an employee may select business class.",
+      "why": "business class may be selected for a segment of 10 hours or more"
+    },
+    {
+      "lines": [
+        118,
+        118
+      ],
+      "sha256": "224293520d5087aa1106f0af655ab63323a8a5f9a39d21c39bdadc0ae524e28c",
+      "quote": "Travelers are required to accept the lowest logical airfare available.",
+      "why": "the default: the lowest logical airfare"
+    },
+    {
+      "lines": [
+        125,
+        128
+      ],
+      "sha256": "ca884d718b90931fe1fe640cfd7dfbfd1bfa9bac638880f9bffd83cd9341240c",
+      "quote": "Airline tickets totaling $7,500 USD or greater will need a supervisor approval prior to the ticket being purchased. The employee is required to included proof of supervisor approval prior to purchase of ticket. This can be done by printing a copy of the itinerary and having the supervisor sign off prior to purchase.",
+      "why": "a ticket of $7,500 or more needs a supervisor's approval before purchase"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "A 955-minute nonstop: a segment of 10 hours or more, so business class may be selected (lines 139-140). The cheapest business fare is $6,240, under $7,500, so no supervisor approval is needed (lines 125-128)."
+}

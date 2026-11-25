@@ -1,0 +1,155 @@
+{
+  "id": "maple-onyx",
+  "category": "multi_rule",
+  "overlays": [
+    "multi_leg"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Boston to San Francisco on February 9th for the design review. I'd like to leave around 8 in the morning; nonstop or a connection, whatever the policy calls for.",
+  "trip": {
+    "traveller_name": "Graham Pike",
+    "traveller_title": "Applications Engineer",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "origin": "BOS",
+    "destination": "SFO",
+    "travel_date": "2027-02-09",
+    "booking_date": "2027-01-19",
+    "requested_departure": "08:00",
+    "purpose": "Customer design review in San Francisco",
+    "purpose_kind": "CUSTOMER_VISIT",
+    "requested_cabin": "ECONOMY",
+    "wants_nonstop": false,
+    "chosen_airline": "",
+    "wants_refundable": false,
+    "dates_may_move": false,
+    "doctor_note_on_file": false,
+    "sign_offs": [],
+    "car_rental_days": 0
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "BOS",
+        "destination": "SFO",
+        "date": "2027-02-09",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "nonstop": {
+            "carrier": "UA",
+            "depart": "08:00",
+            "minutes": [
+              395
+            ]
+          },
+          "detroit": {
+            "carrier": "DL",
+            "via": [
+              "DTW"
+            ],
+            "depart": "07:15",
+            "minutes": [
+              130,
+              290
+            ],
+            "layovers": [
+              60
+            ]
+          },
+          "chicago": {
+            "carrier": "AA",
+            "via": [
+              "ORD"
+            ],
+            "depart": "11:00",
+            "minutes": [
+              165,
+              275
+            ],
+            "layovers": [
+              95
+            ]
+          }
+        },
+        "offers": [
+          {
+            "slot": "nonstop-economy",
+            "flight": "nonstop",
+            "cabin": "ECONOMY",
+            "fare_cents": 61800
+          },
+          {
+            "slot": "detroit-economy",
+            "flight": "detroit",
+            "cabin": "ECONOMY",
+            "fare_cents": 36900
+          },
+          {
+            "slot": "chicago-economy",
+            "flight": "chicago",
+            "cabin": "ECONOMY",
+            "fare_cents": 52800
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "detroit-economy"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "ALTERNATE_ROUTE_TOO_EXPENSIVE",
+      "COST_SAVINGS",
+      "LOWEST_FARE"
+    ],
+    "approvers": [
+      "NONE"
+    ],
+    "clauses": [
+      "AIRLINE_TRAVEL",
+      "TRAVEL_MANAGEMENT"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        141,
+        146
+      ],
+      "sha256": "20c5219b9450f07be5f282c4c71e640a8b52b5ae9cbfa46cf5ca2965d6ac6313",
+      "quote": "• If a direct flight is more expensive than a routing with a connecting flight, the less expensive routing flight should be selected if: o Fare savings is $200 USD (or equivalent amount in local currency) or more roundtrip; o One-way elapsed trip time is not increased by more than 2 hours; or o Departure/arrival time is within 2 hours (before/after) of the requested time.",
+      "why": "the cheaper connecting routing should be selected if the listed tests are met"
+    },
+    {
+      "lines": [
+        118,
+        118
+      ],
+      "sha256": "224293520d5087aa1106f0af655ab63323a8a5f9a39d21c39bdadc0ae524e28c",
+      "quote": "Travelers are required to accept the lowest logical airfare available.",
+      "why": "the default: the lowest logical airfare"
+    },
+    {
+      "lines": [
+        111,
+        112
+      ],
+      "sha256": "021640e38fa11e701ba45533ec5ae98fa79b66c0b168b780276f25ba536be318",
+      "quote": "The Company's travel agency is guided by this travel policy and will confirm the lowest airfare available on the requested itinerary based on the traveler's need.",
+      "why": "the agency confirms the lowest airfare on the requested itinerary"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "The 08:00 nonstop is $618.00 (395 minutes). The Detroit connection leaves at 07:15 and lands 40 minutes after the nonstop, takes 480 minutes (85 more) and saves $249.00: it passes all three tests of lines 141-146, so on every reading of the list's '; or' the less expensive routing is selected, and it is the lowest logical airfare (line 118). The Chicago connection fails all three tests and is dearer. The traveller does not decline the alternative, so lines 113-115 change nothing."
+}

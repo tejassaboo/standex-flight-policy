@@ -1,0 +1,137 @@
+{
+  "id": "gorse-lumen",
+  "category": "boundary_twin",
+  "overlays": [],
+  "twin_of": "fern-cobble",
+  "twin_fact": "nonstops scheduled at 179 or 180 minutes",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Boston to Miami on January 26th for the regional distributor meeting. I'd like premium economy if I'm allowed it on this flight; otherwise regular economy.",
+  "trip": {
+    "traveller_name": "Hannah Okafor",
+    "traveller_title": "Channel Marketing Manager",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "origin": "BOS",
+    "destination": "MIA",
+    "travel_date": "2027-01-26",
+    "booking_date": "2027-01-04",
+    "requested_departure": "",
+    "purpose": "Regional distributor meeting in Miami",
+    "purpose_kind": "CUSTOMER_VISIT",
+    "requested_cabin": "PREMIUM_ECONOMY",
+    "wants_nonstop": false,
+    "chosen_airline": "",
+    "wants_refundable": false,
+    "dates_may_move": false,
+    "doctor_note_on_file": false,
+    "sign_offs": [],
+    "car_rental_days": 0
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "BOS",
+        "destination": "MIA",
+        "date": "2027-01-26",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "american": {
+            "carrier": "AA",
+            "depart": "08:20",
+            "minutes": [
+              179
+            ]
+          },
+          "delta": {
+            "carrier": "DL",
+            "depart": "11:05",
+            "minutes": [
+              179
+            ]
+          }
+        },
+        "offers": [
+          {
+            "slot": "american-economy",
+            "flight": "american",
+            "cabin": "ECONOMY",
+            "fare_cents": 24600
+          },
+          {
+            "slot": "american-premium",
+            "flight": "american",
+            "cabin": "PREMIUM_ECONOMY",
+            "fare_cents": 39800
+          },
+          {
+            "slot": "delta-economy",
+            "flight": "delta",
+            "cabin": "ECONOMY",
+            "fare_cents": 25900
+          },
+          {
+            "slot": "delta-premium",
+            "flight": "delta",
+            "cabin": "PREMIUM_ECONOMY",
+            "fare_cents": 41200
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "american-economy"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "LOWEST_FARE",
+      "UPGRADE_NOT_ELIGIBLE"
+    ],
+    "approvers": [
+      "NONE"
+    ],
+    "clauses": [
+      "AIR_UPGRADES",
+      "AIRLINE_TRAVEL"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        136,
+        136
+      ],
+      "sha256": "e8a76608e559cf6b9963710105df2c001ce88227681ba0c09c6cb2276b0b8ebb",
+      "quote": "• Coach or economy class will be used on all flights with each segment under 3 hours.",
+      "why": "coach on flights with each segment under 3 hours"
+    },
+    {
+      "lines": [
+        137,
+        138
+      ],
+      "sha256": "c6e8e510cf0dceaefe8d907a38f40d2df8adbe8f7bd6bfff1a6c61f442008a34",
+      "quote": "• For flights with a segment of 3 hours or more in duration, an employee may select a premium economy seating if available by the carrier.",
+      "why": "premium economy may be selected for a segment of 3 hours or more"
+    },
+    {
+      "lines": [
+        118,
+        118
+      ],
+      "sha256": "224293520d5087aa1106f0af655ab63323a8a5f9a39d21c39bdadc0ae524e28c",
+      "quote": "Travelers are required to accept the lowest logical airfare available.",
+      "why": "the default: the lowest logical airfare"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "Both nonstops are scheduled at 179 minutes, under 3 hours: coach (line 136), so premium economy is not available and the traveller falls back to economy as asked: the lowest logical airfare (line 118)."
+}

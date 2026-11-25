@@ -1,0 +1,132 @@
+{
+  "id": "willow-gale",
+  "category": "flag",
+  "overlays": [
+    "approval_required",
+    "dearer_option"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [
+    "cinder-moth",
+    "larch-pewter"
+  ],
+  "ambiguity_note": "none: an approval is required and missing; the text is clear",
+  "request": "Chicago to Hong Kong on February 22nd for the supplier development program. Business class please, it's a very long flight.",
+  "trip": {
+    "traveller_name": "Arjun Mehta",
+    "traveller_title": "Supplier Development Manager",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "origin": "ORD",
+    "destination": "HKG",
+    "travel_date": "2027-02-22",
+    "booking_date": "2027-01-25",
+    "requested_departure": "",
+    "purpose": "Supplier development program in Hong Kong",
+    "purpose_kind": "PROJECT_WORK",
+    "requested_cabin": "BUSINESS",
+    "wants_nonstop": false,
+    "chosen_airline": "",
+    "wants_refundable": false,
+    "dates_may_move": false,
+    "doctor_note_on_file": false,
+    "sign_offs": [],
+    "car_rental_days": 0
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "ORD",
+        "destination": "HKG",
+        "date": "2027-02-22",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "cathay": {
+            "carrier": "CX",
+            "depart": "12:40",
+            "minutes": [
+              930
+            ]
+          },
+          "american": {
+            "carrier": "AA",
+            "depart": "14:15",
+            "minutes": [
+              940
+            ]
+          }
+        },
+        "offers": [
+          {
+            "slot": "cathay-economy",
+            "flight": "cathay",
+            "cabin": "ECONOMY",
+            "fare_cents": 121000
+          },
+          {
+            "slot": "cathay-business",
+            "flight": "cathay",
+            "cabin": "BUSINESS",
+            "fare_cents": 750000
+          },
+          {
+            "slot": "american-economy",
+            "flight": "american",
+            "cabin": "ECONOMY",
+            "fare_cents": 126500
+          },
+          {
+            "slot": "american-business",
+            "flight": "american",
+            "cabin": "BUSINESS",
+            "fare_cents": 784000
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "FLAG_FOR_APPROVAL",
+    "offer_slots": [
+      "cathay-business"
+    ],
+    "cabins": [
+      "BUSINESS"
+    ],
+    "reason_codes": [
+      "APPROVAL_REQUIRED"
+    ],
+    "approvers": [
+      "SUPERVISOR"
+    ],
+    "clauses": [
+      "AIRLINE_TRAVEL"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        125,
+        128
+      ],
+      "sha256": "ca884d718b90931fe1fe640cfd7dfbfd1bfa9bac638880f9bffd83cd9341240c",
+      "quote": "Airline tickets totaling $7,500 USD or greater will need a supervisor approval prior to the ticket being purchased. The employee is required to included proof of supervisor approval prior to purchase of ticket. This can be done by printing a copy of the itinerary and having the supervisor sign off prior to purchase.",
+      "why": "a ticket of $7,500 or more needs a supervisor's approval before purchase"
+    },
+    {
+      "lines": [
+        139,
+        140
+      ],
+      "sha256": "9b725f1af27d900a8607f5ab3d23740b459350f86c8e7b12aab251065e48e019",
+      "quote": "• For flights with a segment of 10 hours or more in duration, an employee may select business class.",
+      "why": "business class may be selected for a segment of 10 hours or more"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "A 930-minute nonstop allows business (lines 139-140). The cheapest business ticket is exactly $7,500.00: 'totaling $7,500 USD or greater' is inclusive, so it needs a supervisor approval before it is purchased (lines 125-128), and none is on file. Hold the business fare for the supervisor; approval required, not 'no compliant offer'."
+}

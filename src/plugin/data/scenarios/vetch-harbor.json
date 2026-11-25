@@ -1,0 +1,165 @@
+{
+  "id": "vetch-harbor",
+  "category": "flag",
+  "overlays": [
+    "multi_leg",
+    "unclear_phrase"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [
+    "birch-tallow",
+    "gorse-lumen"
+  ],
+  "ambiguity_note": {
+    "phrase": "For flights with a segment of 3 hours or more in duration, an employee may select",
+    "readings": [
+      "the itinerary has a segment of 3 hours or more, so premium economy may be selected for the ticket: book the United premium economy fare",
+      "only the long segment qualifies and the short one stays in coach; no offer sells that, so book the lowest economy fare"
+    ]
+  },
+  "request": "Boston to Portland, Oregon on January 28th for the customer line trial. I'd like premium economy for the trip, please.",
+  "trip": {
+    "traveller_name": "Tessa Moreau",
+    "traveller_title": "Process Development Engineer",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "origin": "BOS",
+    "destination": "PDX",
+    "travel_date": "2027-01-28",
+    "booking_date": "2027-01-07",
+    "requested_departure": "",
+    "purpose": "Customer production-line trial",
+    "purpose_kind": "PROJECT_WORK",
+    "requested_cabin": "PREMIUM_ECONOMY",
+    "wants_nonstop": false,
+    "chosen_airline": "",
+    "wants_refundable": false,
+    "dates_may_move": false,
+    "doctor_note_on_file": false,
+    "sign_offs": [],
+    "car_rental_days": 0
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "BOS",
+        "destination": "PDX",
+        "date": "2027-01-28",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "united": {
+            "carrier": "UA",
+            "via": [
+              "ORD"
+            ],
+            "depart": "07:05",
+            "minutes": [
+              140,
+              245
+            ],
+            "layovers": [
+              70
+            ]
+          },
+          "american": {
+            "carrier": "AA",
+            "via": [
+              "ORD"
+            ],
+            "depart": "09:40",
+            "minutes": [
+              145,
+              250
+            ],
+            "layovers": [
+              65
+            ]
+          }
+        },
+        "offers": [
+          {
+            "slot": "united-economy",
+            "flight": "united",
+            "cabin": "ECONOMY",
+            "fare_cents": 41800
+          },
+          {
+            "slot": "united-premium",
+            "flight": "united",
+            "cabin": "PREMIUM_ECONOMY",
+            "fare_cents": 69500
+          },
+          {
+            "slot": "american-economy",
+            "flight": "american",
+            "cabin": "ECONOMY",
+            "fare_cents": 43600
+          },
+          {
+            "slot": "american-premium",
+            "flight": "american",
+            "cabin": "PREMIUM_ECONOMY",
+            "fare_cents": 72800
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "FLAG_FOR_APPROVAL",
+    "offer_slots": [
+      "united-premium"
+    ],
+    "cabins": [
+      "PREMIUM_ECONOMY"
+    ],
+    "reason_codes": [
+      "UNCLEAR_POLICY_TEXT"
+    ],
+    "approvers": [
+      "CHIEF_FINANCIAL_OFFICER",
+      "GROUP_VP_FINANCE",
+      "MANAGER",
+      "NOT_NAMED",
+      "SUPERVISOR"
+    ],
+    "clauses": [
+      "AIRLINE_TRAVEL"
+    ],
+    "unclear_phrase": "For flights with a segment of 3 hours or more in duration, an employee may select"
+  },
+  "must_keep": [
+    {
+      "lines": [
+        137,
+        138
+      ],
+      "sha256": "c6e8e510cf0dceaefe8d907a38f40d2df8adbe8f7bd6bfff1a6c61f442008a34",
+      "quote": "• For flights with a segment of 3 hours or more in duration, an employee may select a premium economy seating if available by the carrier.",
+      "why": "premium economy may be selected for a segment of 3 hours or more"
+    },
+    {
+      "lines": [
+        136,
+        136
+      ],
+      "sha256": "e8a76608e559cf6b9963710105df2c001ce88227681ba0c09c6cb2276b0b8ebb",
+      "quote": "• Coach or economy class will be used on all flights with each segment under 3 hours.",
+      "why": "coach on flights with each segment under 3 hours"
+    },
+    {
+      "lines": [
+        935,
+        937
+      ],
+      "sha256": "7d224e5b4b7e28e7f5978e7bb8c09d83046009b117b1b33e34818bc22d197f68",
+      "quote": "Any exception to this policy will be evaluated on a case-by-case basis. If your travel plans deviate from the policy as outlined above, or if you have concerns regarding the policy as it is written, your request/concern should be submitted to your immediate supervisor/manager. Every attempt",
+      "why": "concerns about the policy as written go to the immediate supervisor/manager"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "Each itinerary has one flight under 3 hours (140 or 145 minutes to Chicago) and one of 3 hours or more (245 or 250 minutes to Portland). Premium economy may be selected 'for flights with a segment of 3 hours or more' (lines 137-138), but coach is used on 'all flights with each segment under 3 hours' (line 136), and the offer sells premium economy on both flights. The text does not say whether one long segment qualifies the whole ticket: hold the cheapest premium economy fare."
+}

@@ -1,0 +1,16 @@
+{
+  "id": "standex-flight-policy",
+  "name": "Standex Travel Policy Flight Booking",
+  "slug": "standex",
+  "title": "Standex International Corporation TVL 1-1 Travel Policies and Guidelines (February 2018)",
+  "frozen_file": "standex_policy.txt",
+  "sha256": "005f2a55516bbb6c4b2118a7a334622a5ab43d53af626b0ef38d76d0fcd2d486",
+  "raw_pdf_sha256": "d3af7faeeff101ad927010fdd806d23e33d1b5813d4ad27c197cf68c348ce811",
+  "words": 6972,
+  "lines": 973,
+  "source": "http://web.archive.org/web/20231025075509id_/https://standex.com/wp-content/uploads/2020/06/TVL-1-1-Travel-Policies-and-Guidelines-2-2018.pdf",
+  "frozen_on": "2026-11-24",
+  "scenario_count": 24,
+  "currency": "USD",
+  "background_offers": 0
+}

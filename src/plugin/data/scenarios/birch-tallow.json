@@ -1,0 +1,152 @@
+{
+  "id": "birch-tallow",
+  "category": "easy",
+  "overlays": [
+    "multi_leg",
+    "dearer_option"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Boston to Honolulu on January 19th for the foodservice equipment expo. It's a long day of flying, so I'd like premium economy, connections are fine.",
+  "trip": {
+    "traveller_name": "Priya Raman",
+    "traveller_title": "Product Line Manager",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "origin": "BOS",
+    "destination": "HNL",
+    "travel_date": "2027-01-19",
+    "booking_date": "2026-12-29",
+    "requested_departure": "",
+    "purpose": "Foodservice equipment expo in Honolulu",
+    "purpose_kind": "CONFERENCE",
+    "requested_cabin": "PREMIUM_ECONOMY",
+    "wants_nonstop": false,
+    "chosen_airline": "",
+    "wants_refundable": false,
+    "dates_may_move": false,
+    "doctor_note_on_file": false,
+    "sign_offs": [],
+    "car_rental_days": 0
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "main",
+        "origin": "BOS",
+        "destination": "HNL",
+        "date": "2027-01-19",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "losangeles": {
+            "carrier": "DL",
+            "via": [
+              "LAX"
+            ],
+            "depart": "07:30",
+            "minutes": [
+              365,
+              340
+            ],
+            "layovers": [
+              75
+            ]
+          },
+          "seattle": {
+            "carrier": "AS",
+            "via": [
+              "SEA"
+            ],
+            "depart": "08:45",
+            "minutes": [
+              380,
+              365
+            ],
+            "layovers": [
+              65
+            ]
+          }
+        },
+        "offers": [
+          {
+            "slot": "losangeles-economy",
+            "flight": "losangeles",
+            "cabin": "ECONOMY",
+            "fare_cents": 48900
+          },
+          {
+            "slot": "losangeles-premium",
+            "flight": "losangeles",
+            "cabin": "PREMIUM_ECONOMY",
+            "fare_cents": 79800
+          },
+          {
+            "slot": "seattle-economy",
+            "flight": "seattle",
+            "cabin": "ECONOMY",
+            "fare_cents": 45600
+          },
+          {
+            "slot": "seattle-premium",
+            "flight": "seattle",
+            "cabin": "PREMIUM_ECONOMY",
+            "fare_cents": 83500
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "losangeles-premium"
+    ],
+    "cabins": [
+      "PREMIUM_ECONOMY"
+    ],
+    "reason_codes": [
+      "PREMIUM_ECONOMY_ALLOWED"
+    ],
+    "approvers": [
+      "NONE"
+    ],
+    "clauses": [
+      "AIRLINE_TRAVEL"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        137,
+        138
+      ],
+      "sha256": "c6e8e510cf0dceaefe8d907a38f40d2df8adbe8f7bd6bfff1a6c61f442008a34",
+      "quote": "• For flights with a segment of 3 hours or more in duration, an employee may select a premium economy seating if available by the carrier.",
+      "why": "premium economy may be selected for a segment of 3 hours or more"
+    },
+    {
+      "lines": [
+        136,
+        136
+      ],
+      "sha256": "e8a76608e559cf6b9963710105df2c001ce88227681ba0c09c6cb2276b0b8ebb",
+      "quote": "• Coach or economy class will be used on all flights with each segment under 3 hours.",
+      "why": "coach on flights with each segment under 3 hours"
+    },
+    {
+      "lines": [
+        118,
+        118
+      ],
+      "sha256": "224293520d5087aa1106f0af655ab63323a8a5f9a39d21c39bdadc0ae524e28c",
+      "quote": "Travelers are required to accept the lowest logical airfare available.",
+      "why": "the default: the lowest logical airfare"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "Both itineraries connect, and every flight of each is 3 hours or more (365 and 340, 380 and 365 minutes), so premium economy may be selected on every reading of lines 137-138: the cheapest premium economy fare. The Seattle economy fare is cheaper but the traveller asked for premium economy, which is permitted."
+}
